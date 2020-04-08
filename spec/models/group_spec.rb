@@ -23,8 +23,10 @@ RSpec.describe Group, :type => :model do
     end
 
     it "requires short description to be less than 140 characters" do
-      group = build(:group,
-                    short_description: Forgery('lorem_ipsum').characters(141))
+      group = build(
+        :group,
+        short_description: Faker::Lorem.characters(number: 141)
+      )
       expect(group).not_to be_valid
     end
 
@@ -33,8 +35,10 @@ RSpec.describe Group, :type => :model do
     end
 
     it "requires meet details to be less than 50 characters" do
-      group = build(:group,
-                    meet_details: Forgery('lorem_ipsum').characters(51))
+      group = build(
+        :group,
+        meet_details: Faker::Lorem.characters(number: 51)
+      )
       expect(group).not_to be_valid
     end
 
@@ -43,8 +47,10 @@ RSpec.describe Group, :type => :model do
     end
 
     it "requires target audience to be less than 50 characters" do
-      group = build(:group,
-                    target_audience: Forgery('lorem_ipsum').characters(51))
+      group = build(
+        :group,
+        target_audience: Faker::Lorem.characters(number: 51)
+      )
       expect(group).not_to be_valid
     end
   end

@@ -1,4 +1,4 @@
-class Announcement < ActiveRecord::Base
+class Announcement < ApplicationRecord
   belongs_to :post
   belongs_to :bulletin
 
@@ -6,5 +6,4 @@ class Announcement < ActiveRecord::Base
 
   validates :bulletin, presence: true
   validates :description, presence: true
-  validates :url, presence: true
 end

@@ -1,5 +1,3 @@
-class Attachment < ActiveRecord::Base
-  belongs_to :attachable, polymorphic: true
-
-  validates :url, url: { allow_blank: true }
+class Attachment < ApplicationRecord
+  belongs_to :attachable, polymorphic: true, optional: true
 end

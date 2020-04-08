@@ -1,8 +1,8 @@
-class Bulletin < ActiveRecord::Base
+class Bulletin < ApplicationRecord
   include HasAttachment
 
   belongs_to :group
-  belongs_to :sermon
+  belongs_to :sermon, optional: true
   has_many :announcements
   has_attachment :audio # TODO remove when sermons fully migrated
   has_attachment :banner
