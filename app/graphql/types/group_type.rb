@@ -8,8 +8,8 @@ module Types
     field :target_audience, String, null: false
     field :banner_url, String, null: true
     field :profile_picture_url, String, null: true
-    field :posts, [Types::PostType], null: false
-    field :bulletins, [Types::BulletinType], null: false
+    field :posts, Types::PostType.connection_type, null: false, max_page_size: 10
+    field :bulletins, Types::BulletinType.connection_type, null: false, max_page_size: 10
 
     def posts
       object.posts.order("published_at DESC")
