@@ -3,6 +3,7 @@ class Group < ApplicationRecord
   include HasAttachment
 
   has_many :posts
+  has_many :bulletins
 
   validates :name, presence: true
   validates :slug, uniqueness: { case_sensitive: false },
