@@ -14,8 +14,8 @@ RSpec.describe Types::GroupType do
 
     let(:gql) do
       <<-GQL
-        query($id: ID!, $afterPost: String) {
-          group(id: $id) {
+        query($slug: String!, $afterPost: String) {
+          group(slug: $slug) {
             posts(after: $afterPost) {
               edges {
                 cursor
@@ -29,7 +29,7 @@ RSpec.describe Types::GroupType do
       GQL
     end
 
-    let(:result) { FisherhallApiSchema.execute(gql, variables: { id: group.id }) }
+    let(:result) { FisherhallApiSchema.execute(gql, variables: { slug: group.slug }) }
 
     before do
       create(:post)
@@ -42,12 +42,12 @@ RSpec.describe Types::GroupType do
 
     context "when a cursor is provided" do
       let(:cursor) do
-        result = FisherhallApiSchema.execute(gql, variables: { id: group.id })
+        result = FisherhallApiSchema.execute(gql, variables: { slug: group.slug })
         result["data"]["group"]["posts"]["edges"].last["cursor"]
       end
 
       let(:result) do
-        FisherhallApiSchema.execute(gql, variables: { id: group.id, afterPost: cursor })
+        FisherhallApiSchema.execute(gql, variables: { slug: group.slug, afterPost: cursor })
       end
 
       it "returns posts after the cursor" do
@@ -68,8 +68,8 @@ RSpec.describe Types::GroupType do
 
     let(:gql) do
       <<-GQL
-        query($id: ID!, $afterBulletin: String) {
-          group(id: $id) {
+        query($slug: String!, $afterBulletin: String) {
+          group(slug: $slug) {
             bulletins(after: $afterBulletin) {
               edges {
                 cursor
@@ -83,7 +83,7 @@ RSpec.describe Types::GroupType do
       GQL
     end
 
-    let(:result) { FisherhallApiSchema.execute(gql, variables: { id: group.id }) }
+    let(:result) { FisherhallApiSchema.execute(gql, variables: { slug: group.slug }) }
 
     before do
       create(:bulletin)
@@ -96,12 +96,12 @@ RSpec.describe Types::GroupType do
 
     context "when a cursor is provided" do
       let(:cursor) do
-        result = FisherhallApiSchema.execute(gql, variables: { id: group.id })
+        result = FisherhallApiSchema.execute(gql, variables: { slug: group.slug })
         result["data"]["group"]["bulletins"]["edges"].last["cursor"]
       end
 
       let(:result) do
-        FisherhallApiSchema.execute(gql, variables: { id: group.id, afterBulletin: cursor })
+        FisherhallApiSchema.execute(gql, variables: { slug: group.slug, afterBulletin: cursor })
       end
 
       it "returns bulletins after the cursor" do

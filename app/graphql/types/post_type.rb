@@ -7,5 +7,6 @@ module Types
     field :published_at, String, null: true
     field :banner_url, String, null: true
     field :kind, String, null: false
+    field :slug, String, null: false
   end
 end

@@ -2,10 +2,10 @@ require "rails_helper"
 
 RSpec.describe Types::QueryType do
   describe "group" do
-    it "loads groups by ID" do
+    it "loads groups by slug" do
       gql = <<-GQL
-        query($id: ID!) {
-          group(id: $id) {
+        query($slug: String!) {
+          group(slug: $slug) {
             id
             name
           }
@@ -13,7 +13,7 @@ RSpec.describe Types::QueryType do
       GQL
 
       group = create(:group, name: "Test Group")
-      result = FisherhallApiSchema.execute(gql, variables: { id: group.id })
+      result = FisherhallApiSchema.execute(gql, variables: { slug: group.slug })
 
       expect(result["data"]["group"]["id"]).to eq group.id.to_s
       expect(result["data"]["group"]["name"]).to eq group.name
@@ -34,8 +34,27 @@ RSpec.describe Types::QueryType do
       groups = create_list(:group, 3)
       result = FisherhallApiSchema.execute(gql)
 
-      expect(groups.map { |g| [g.id.to_s, g.name] }).
-        to eq result["data"]["groups"].map { |g| [g["id"].to_s, g["name"]] }
+      expect(result["data"]["groups"].map { |g| [g["id"].to_s, g["name"]] }).
+        to eq groups.sort_by(&:name).map { |g| [g.id.to_s, g.name] }
+    end
+  end
+
+  describe "post" do
+    it "loads post by id" do
+      gql = <<-GQL
+        query($id: ID!) {
+          post(id: $id) {
+            id
+            title
+          }
+        }
+      GQL
+
+      post = create(:post, title: "Test Post")
+      result = FisherhallApiSchema.execute(gql, variables: { id: post.id })
+
+      expect(result["data"]["post"]["id"]).to eq post.id.to_s
+      expect(result["data"]["post"]["title"]).to eq post.title
     end
   end
 end
