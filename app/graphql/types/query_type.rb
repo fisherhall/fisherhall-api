@@ -14,6 +14,11 @@ module Types
       argument :id, ID, required: true
     end
 
+    field :service, BulletinType, null: true do
+      description "Find a service by bulletin ID"
+      argument :id, ID, required: true
+    end
+
     def group(slug:)
       Group.find_by(slug: slug)
     end
@@ -24,6 +29,10 @@ module Types
 
     def post(id:)
       Post.find(id)
+    end
+
+    def service(id:)
+      Bulletin.find(id)
     end
   end
 end
