@@ -5,7 +5,7 @@ module Types
     field :name, String, null: false
     field :service_order, String, null: false
     field :sermon_notes, String, null: true
-    field :published_at, String, null: true
+    field :published_at, GraphQL::Types::ISO8601DateTime, null: true
     field :announcements, [AnnouncementType], null: false
 
     def announcements
