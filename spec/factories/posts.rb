@@ -12,6 +12,7 @@ FactoryBot.define do
     trait :completed do
       published_at { 2.days.ago }
       tag_list { Faker::Lorem.words }
+      sequence(:banner_url) { |n| "https://picsum.photos/seed/postbanner#{n}/1920/1080" }
     end
   end
 end
