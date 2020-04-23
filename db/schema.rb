@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2016_10_11_033416) do
+ActiveRecord::Schema.define(version: 2020_04_23_213726) do
 
   create_table "announcements", force: :cascade do |t|
     t.integer "post_id"
@@ -70,6 +70,14 @@ ActiveRecord::Schema.define(version: 2016_10_11_033416) do
     t.string "target_audience"
     t.string "meet_details"
     t.index ["slug"], name: "index_groups_on_slug", unique: true
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.string "slug", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "posts", force: :cascade do |t|

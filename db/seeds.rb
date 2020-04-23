@@ -1,3 +1,9 @@
+org = FactoryBot.create(
+  :organization,
+  name: "Montreal Chinese Alliance Church",
+  slug: "mcac"
+)
+
 groups = 
   FactoryBot.create_list(:group, 10, :completed) +
   [FactoryBot.create(:group, :completed, name: "English Service", slug: "english-service")]
