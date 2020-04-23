@@ -2,6 +2,7 @@ module Types
   class GroupType < Types::BaseObject
     field :id, ID, null: false
     field :name, String, null: false
+    field :about, String, null: false
     field :slug, String, null: false
     field :short_description, String, null: false
     field :meet_details, String, null: false

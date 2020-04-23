@@ -10,6 +10,9 @@ FactoryBot.define do
     end
 
     factory :bulletin_with_announcements do
+      group
+      published_at { DateTime.now }
+
       transient do
         announcements_count { 3 }
       end

@@ -9,8 +9,8 @@ FactoryBot.define do
       about do
         Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4)
       end
-      banner_url { Faker::Internet.url(path: '/banner.png') }
-      profile_picture_url { Faker::Internet.url(path: '/profile-picture.png') }
+      sequence(:banner_url) { |n| "https://picsum.photos/seed/banner#{n}/1920/1080" }
+      sequence(:profile_picture_url) { |n| "https://picsum.photos/seed/profile#{n}/512/512" }
     end
   end
 end
