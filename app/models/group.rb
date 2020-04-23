@@ -4,6 +4,7 @@ class Group < ApplicationRecord
 
   has_many :posts
   has_many :bulletins
+  belongs_to :organization
 
   validates :name, presence: true
   validates :slug, uniqueness: { case_sensitive: false },

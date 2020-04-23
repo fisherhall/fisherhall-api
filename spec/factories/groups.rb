@@ -4,6 +4,7 @@ FactoryBot.define do
     short_description { Faker::Lorem.paragraph }
     meet_details { Faker::Lorem.sentence }
     target_audience { Faker::Lorem.sentence }
+    organization
 
     trait :completed do
       about do

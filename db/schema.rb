@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_213726) do
+ActiveRecord::Schema.define(version: 2020_04_23_215252) do
 
   create_table "announcements", force: :cascade do |t|
     t.integer "post_id"
@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 2020_04_23_213726) do
     t.string "short_description"
     t.string "target_audience"
     t.string "meet_details"
+    t.integer "organization_id", default: 1, null: false
+    t.index ["organization_id"], name: "index_groups_on_organization_id"
     t.index ["slug"], name: "index_groups_on_slug", unique: true
   end
 
@@ -155,5 +157,6 @@ ActiveRecord::Schema.define(version: 2020_04_23_213726) do
   end
 
   add_foreign_key "bulletins", "sermons"
+  add_foreign_key "groups", "organizations"
   add_foreign_key "sermons", "groups"
 end
