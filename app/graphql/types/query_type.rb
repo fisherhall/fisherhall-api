@@ -7,6 +7,7 @@ module Types
 
     field :groups, [GroupType], null: false do
       description "List all groups"
+      argument :organization_id, ID, required: false
     end
 
     field :post, PostType, null: true do
@@ -23,8 +24,8 @@ module Types
       Group.find_by(slug: slug)
     end
 
-    def groups
-      Group.order(:name)
+    def groups(organization_id: 1)
+      Group.where(organization_id: organization_id).order(:name)
     end
 
     def post(id:)
