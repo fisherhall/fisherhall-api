@@ -5,8 +5,8 @@ org = FactoryBot.create(
 )
 
 groups = 
-  FactoryBot.create_list(:group, 10, :completed) +
-  [FactoryBot.create(:group, :completed, name: "English Service", slug: "english-service")]
+  FactoryBot.create_list(:group, 10, :completed, organization: org) +
+  [FactoryBot.create(:group, :completed, name: "English Service", slug: "english-service", organization: org)]
 
 groups.each do |g|
   FactoryBot.create_list(:post, 30, :completed, group: g)
