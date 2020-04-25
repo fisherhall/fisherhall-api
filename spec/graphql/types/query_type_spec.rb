@@ -29,7 +29,7 @@ RSpec.describe Types::QueryType do
 
     it "loads all groups of an organization in alphabetical order" do
       gql = <<-GQL
-        query($organizationId: ID) {
+        query($organizationId: ID!) {
           groups(organizationId: $organizationId) {
             id
             name
@@ -42,30 +42,6 @@ RSpec.describe Types::QueryType do
 
       expect(result["data"]["groups"].map { |g| [g["id"].to_s, g["name"]] }).
         to eq groups.sort_by(&:name).map { |g| [g.id.to_s, g.name] }
-    end
-
-    context "when no organization_id is provided" do
-      let(:groups) { Group.where(organization_id: 1).order(:name) }
-
-      before do
-        create_list(:group, 3, organization_id: 1)
-      end
-      
-      it "loads all groups of the first organization in alphabetical order" do
-        gql = <<-GQL
-          query($organizationId: ID) {
-            groups(organizationId: $organizationId) {
-              id
-              name
-            }
-          }
-        GQL
-
-        result = FisherhallApiSchema.execute(gql)
-
-        expect(result["data"]["groups"].map { |g| [g["id"].to_s, g["name"]] }).
-          to eq groups.map { |g| [g.id.to_s, g.name] }
-      end
     end
   end
 
