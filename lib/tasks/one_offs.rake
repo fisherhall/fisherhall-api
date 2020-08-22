@@ -6,7 +6,7 @@ namespace :one_offs do
  - **Children's Moment**
  - **[Announcements](#announcements)**
  - **Tithe & Offering**
- - **Sermon**
+ - **Sermon**  
    Am I My Brother's Keeper?  
    1 Thessalonians 5:12-18  
    Rev. Thomas Chan
