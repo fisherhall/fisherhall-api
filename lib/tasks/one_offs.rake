@@ -7,7 +7,7 @@ namespace :one_offs do
  - **[Announcements](#announcements)**
  - **Tithe & Offering**
  - **Sermon**  
-   Do Not Be Anxious
+   Do Not Be Anxious  
    Matthew 6:25-34  
    Rev. Ian Ho
  - **Doxology**
