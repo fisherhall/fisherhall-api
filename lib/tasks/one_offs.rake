@@ -1,7 +1,7 @@
 namespace :one_offs do
   desc "add new bulletin"
   task :new_bulletin => :environment do
-    sermon_name = "In Green Pastures",
+    sermon_name = "In Green Pastures"
     speaker = "Pastor Joel Uong"
     scripture = "Psalm 23:2a"
 
