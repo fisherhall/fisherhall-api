@@ -22,7 +22,7 @@ namespace :one_offs do
     
     sermon = Sermon.create(
       group: service,
-      name: sermon_name
+      name: sermon_name,
       published_at: published_at,
       speaker: speaker,
     )
