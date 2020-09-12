@@ -1,9 +1,12 @@
 namespace :one_offs do
   desc "add new bulletin"
   task :new_bulletin => :environment do
-    sermon_name = "In Green Pastures"
-    speaker = "Pastor Joel Uong"
-    scripture = "Psalm 23:2a"
+    service = Group.find_by(slug: "english-service")
+    sermon_name = "Blooming in a Crack"
+    speaker = "Rev. Thomas Chan"
+    scripture = "Mark 5:24-34"
+    service_name = "English Worship Service"
+    published_at = DateTime.new(2020, 9, 13, 13, 30)
 
     service_order = " - **Call to Worship**
  - **Praise & Worship**
@@ -13,13 +16,9 @@ namespace :one_offs do
    #{sermon_name}  
    #{scripture}  
    #{speaker}
- - **Holy Communion**
  - **Doxology**
  - **Benediction**"
 
-    service = Group.find_by(slug: "english-service")
-    published_at = DateTime.new(2020, 9, 6, 13, 30)
-    
     sermon = Sermon.create(
       group: service,
       name: sermon_name,
@@ -29,7 +28,7 @@ namespace :one_offs do
 
     bulletin = Bulletin.create(
       published_at: published_at,
-      name: "Holy Communion Sunday Worship Service",
+      name: service_name,
       service_order: service_order,
       group: service
     )
@@ -41,17 +40,22 @@ namespace :one_offs do
 
     Announcement.create(
       bulletin: bulletin,
+      description: "We thank Pastor Thomas for ministering to us today.",
+    )
+
+    Announcement.create(
+      bulletin: bulletin,
+      description: "The church has established an MCAC Building Reopening Committee, composed of the pastors, leaders and co-workers from the three congregations, to discuss and draft plans and procedures for the reopening of the church facility for the Elders Board to make decisions. Please pray for this matter.",
+    )
+
+    Announcement.create(
+      bulletin: bulletin,
       description: "We thank Angela, Amos, Key, Nelson, Sam and the VSM team for the production of the Service video. **The production team is training helpers.** If you would like to serve in this area, please contact one of them.",
     )
 
     Announcement.create(
       bulletin: bulletin,
-      description: "Today is Holy Communion Sunday. We ask those who are baptized to participate with bread and grape juice. We invite those who are not baptized to join in meditation.",
-    )
-
-    Announcement.create(
-      bulletin: bulletin,
-      description: "The Youth Sunday School happens every Sunday from 11:15 am to 12:30 pm, September 13 to December 13, 2020. This semester, we will study together the Book of Romans. Join the Youth 1 class (Sec I & II) with Shaden and Yen-Nhi or the Youth 2 class (Sec III, IV, & V) with Jeremy and Estelle. [Students must register.](https://docs.google.com/forms/d/e/1FAIpQLSdwhStkKk7AXO-61DGcEaPsb6ttRinsKZeNtkI2bLZSABcycQ/viewform?fbclid=IwAR3XRiE8aWfUMn6UXjs2vn8aGNAToyfJrEPWagqfQd1HPqSx7qScK2Z-m7M) For enquiry, please contact Elder Daniel.",
+      description: "The Youth Sunday School happens every Sunday from 11:15 am to 12:30 pm, September 13 to December 13, 2020. This semester, we will study together the Book of Romans. Join the Youth 1 class (Sec I) with Shaden and Yen-Nhi or the Youth 2 class (Sec II to V) with Jeremy and Estelle. [Students must register.](https://docs.google.com/forms/d/e/1FAIpQLSdwhStkKk7AXO-61DGcEaPsb6ttRinsKZeNtkI2bLZSABcycQ/viewform?fbclid=IwAR3XRiE8aWfUMn6UXjs2vn8aGNAToyfJrEPWagqfQd1HPqSx7qScK2Z-m7M) For enquiry, please contact Elder Daniel.",
     )
 
     Announcement.create(
