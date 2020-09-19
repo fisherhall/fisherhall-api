@@ -2,11 +2,11 @@ namespace :one_offs do
   desc "add new bulletin"
   task :new_bulletin => :environment do
     service = Group.find_by(slug: "english-service")
-    sermon_name = "Blooming in a Crack"
-    speaker = "Rev. Thomas Chan"
-    scripture = "Mark 5:24-34"
+    sermon_name = "Beside Quiet Waters"
+    speaker = "Pastor Joel Uong"
+    scripture = "Psalm 23:2b"
     service_name = "English Worship Service"
-    published_at = DateTime.new(2020, 9, 13, 13, 30)
+    published_at = DateTime.new(2020, 9, 20, 13, 30)
 
     service_order = " - **Call to Worship**
  - **Praise & Worship**
@@ -40,12 +40,22 @@ namespace :one_offs do
 
     Announcement.create(
       bulletin: bulletin,
-      description: "We thank Pastor Thomas for ministering to us today.",
+      description: "To help better plan for the reopening of church facilities, the **Church Reopening Committee** urges everyone to respond to the [Church Building Reopening Survey](https://docs.google.com/forms/d/e/1FAIpQLSf923AdochLu56tQkJFqfg0jZNSVin1E2M89Kc44u5YdBLScg/viewform). The survey deadline is October 4th. Your participation is greatly appreciated.",
     )
 
     Announcement.create(
       bulletin: bulletin,
-      description: "The church has established an MCAC Building Reopening Committee, composed of the pastors, leaders and co-workers from the three congregations, to discuss and draft plans and procedures for the reopening of the church facility for the Elders Board to make decisions. Please pray for this matter.",
+      description: "As physical meeting at church is limited, we rely on email, phone and postal mail to communicate with the members for the distribution of electronic and printed documents (such as offering records & receipts, voting ballots, pledge cards, etc.). Therefore, the church urges everyone to go to the [Contact Information Registration Page](https://docs.google.com/forms/d/e/1FAIpQLSdJLiojUX2kRmiVqVLLtPdLTUJAcLk7y7zCP0A1awD7YEt31w/viewform?vc=0&c=0&w=1&flr=0&gxids=7757) and fill in the contact information form. All information will be kept confidential",
+    )
+
+    Announcement.create(
+      bulletin: bulletin,
+      description: "The recent explosion in Beirut damaged the Lebanon (Karantina) Alliance Church and the Alliance Bible School’s classrooms, offices, and student dorms. The C&MA [set aside a fund](https://www.cmacan.org/relief-in-lebanon/) for the Beirut relief effort from the Global Emergency Relief Fund (GERF). You can support this effort by donating to GERF through: ❶ the [CanadaHelps](https://www.canadahelps.org/en/dn/36602) (fee applies); ❷ mailing **checks** to C&MA (30 Carrie Dr., Suite100, Toronto, On. M9W 5T7); ❸ **INTERAC e-Transfer®** using the destination etransfers💌cmacan.org; ❹ offering to **MCAC**, we will forward the donation to C&MA (this will affect our church’s application to the government COVID subsidy, CEWS, since this donation will be counted as our incomes). You must specify “Lebanon Alliance Church” when making donations, no matter which channel you use.",
+    )
+
+    Announcement.create(
+      bulletin: bulletin,
+      description: "**Justin Au-Yeung** and **Kimberly Gose Oabel** will tie the knot on October 10 at Hotel William Gray. Only the immediate families will attend the ceremony.",
     )
 
     Announcement.create(
