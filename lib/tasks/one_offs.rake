@@ -2,11 +2,11 @@ namespace :one_offs do
   desc "add new bulletin"
   task :new_bulletin => :environment do
     service = Group.find_by(slug: "english-service")
-    sermon_name = "Beside Quiet Waters"
-    speaker = "Pastor Joel Uong"
-    scripture = "Psalm 23:2b"
+    sermon_name = "Joe Who"
+    speaker = "Rev. Thomas Chan"
+    scripture = "Acts 4:36-37"
     service_name = "English Worship Service"
-    published_at = DateTime.new(2020, 9, 20, 13, 30)
+    published_at = DateTime.new(2020, 9, 27, 13, 30)
 
     service_order = " - **Call to Worship**
  - **Praise & Worship**
@@ -40,6 +40,16 @@ namespace :one_offs do
 
     Announcement.create(
       bulletin: bulletin,
+      description: "We thank Pastor Thomas for ministering to us today.",
+    )
+
+    Announcement.create(
+      bulletin: bulletin,
+      description: "We welcome **Kristin Hum** joining us to serve as Part-time Children Ministry Coordinator effective from September 15, 2020. She was professionally trained in education and is passionate to serve God. Kindly lift her and our children in your prayers.",
+    )
+
+    Announcement.create(
+      bulletin: bulletin,
       description: "To help better plan for the reopening of church facilities, the **Church Reopening Committee** urges everyone to respond to the [Church Building Reopening Survey](https://docs.google.com/forms/d/e/1FAIpQLSf923AdochLu56tQkJFqfg0jZNSVin1E2M89Kc44u5YdBLScg/viewform). The survey deadline is October 4th. Your participation is greatly appreciated.",
     )
 
@@ -50,7 +60,17 @@ namespace :one_offs do
 
     Announcement.create(
       bulletin: bulletin,
+      description: "The Finance Department is distributing the **YTD (January to August) offering record** and **2019 pledge card** to the participants via email. We urge you to register your contact info on the church website asap. If you need assistance, please contact **donations.mcac💌gmail.com**.",
+    )
+
+    Announcement.create(
+      bulletin: bulletin,
       description: "The recent explosion in Beirut damaged the Lebanon (Karantina) Alliance Church and the Alliance Bible School’s classrooms, offices, and student dorms. The C&MA [set aside a fund](https://www.cmacan.org/relief-in-lebanon/) for the Beirut relief effort from the Global Emergency Relief Fund (GERF). You can support this effort by donating to GERF through: ❶ the [CanadaHelps](https://www.canadahelps.org/en/dn/36602) (fee applies); ❷ mailing **checks** to C&MA (30 Carrie Dr., Suite100, Toronto, On. M9W 5T7); ❸ **INTERAC e-Transfer®** using the destination etransfers💌cmacan.org; ❹ offering to **MCAC**, we will forward the donation to C&MA (this will affect our church’s application to the government COVID subsidy, CEWS, since this donation will be counted as our incomes). You must specify “Lebanon Alliance Church” when making donations, no matter which channel you use.",
+    )
+
+    Announcement.create(
+      bulletin: bulletin,
+      description: "We congratulate **Dorothy Lee** and **Matthew Hui** as they are getting married this Saturday at the Ottawa Chinese Alliance Church. Feel free to sign their [e-guestbook](http://dormatt2020.minted.us) ✍️",
     )
 
     Announcement.create(
@@ -75,7 +95,7 @@ namespace :one_offs do
 
     Announcement.create(
       bulletin: bulletin,
-      description: "The **Youth Fellowship** is starting a new school year. They meet every second Saturday on Zoom. The fellowship program and updates can be found on the MCAC Youth Facebook. Please pray for ❶ the counselors as they try to reset for the new school year, ❷ find new ways to build relationships in a virtual setting, ❸ figure out a good transition between Youth Group and Bethany Fellowship student leaders - they'll be leading in this new age! ❹ Pray for the youth patience as counselors navigate this new environment and their courage to try new things. ❺ Searching for a new counselor to facilitate Sunshine's exit.",
+      description: "The **Youth Fellowship** is starting a new school year. They meet every second Saturday on Zoom. The fellowship program and updates can be found on the MCAC Youth Facebook. Please pray for their needs. Prayer requests are posted on Facebook.",
     )
 
     Announcement.create(
@@ -86,11 +106,6 @@ namespace :one_offs do
     Announcement.create(
       bulletin: bulletin,
       description: "Come & join us after service for a time of fellowship on Zoom ☕️: [ID: 929 7664 6166; PW: fisher](https://zoom.us/j/92976646166?pwd=TDFweTFHNENWNzJwUEhxTWs3eG9qZz09).",
-    )
-
-    Announcement.create(
-      bulletin: bulletin,
-      description: "CCM Montreal **“Love Basket”** operation begins in September. You can support in the following ways: ❶ collect, prepare or deliver food baskets; ❷ donate non-perishable food items; ❸ financial support. Please contact Karen Lee (Wing Hei's mom) for more info.",
     )
   end
 end
