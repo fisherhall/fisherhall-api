@@ -1,4 +1,33 @@
 namespace :one_offs do
+  desc "add new post"
+  task :new_post => :environment do
+    service = Group.find_by(slug: "english-service")
+
+    post = Post.new
+    post.group = service
+    post.author = User.find_by(email: "ac@amoschan.com")
+    content = "To help better plan for the reopening of church facilities, the
+    **Church Reopening Committee** urges everyone to respond to the [Church
+    Building Reopening
+    Survey](https://docs.google.com/forms/d/e/1FAIpQLSf923AdochLu56tQkJFqfg0jZNSVin1E2M89Kc44u5YdBLScg/viewform).
+    **The survey deadline is today.** Your participation is greatly
+    appreciated.
+
+
+    As physical meeting at church is limited, we rely on email, phone and
+    postal mail to communicate with the members for the distribution of
+    electronic and printed documents (such as offering records & receipts,
+    voting ballots, pledge cards, etc.). Therefore, the church urges everyone
+    to go to the [Contact Information Registration
+    Page](https://docs.google.com/forms/d/e/1FAIpQLSdJLiojUX2kRmiVqVLLtPdLTUJAcLk7y7zCP0A1awD7YEt31w/viewform?vc=0&c=0&w=1&flr=0&gxids=7757)
+    and fill in the contact information form. All information will be kept
+    confidential"
+
+    post.kind = :post
+
+    post.save
+  end
+
   desc "add new bulletin"
   task :new_bulletin => :environment do
     service = Group.find_by(slug: "english-service")
