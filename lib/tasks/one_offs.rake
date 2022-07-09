@@ -71,19 +71,39 @@ during the quarantine period.
     post.save
   end
 
+namespace :one_offs do
+  desc "add new post"
+  task :new_post => :environment do
+    group = Group.find_by(slug: "youth-group")
+
+    post = Post.new
+    post.group = group
+    post.author = User.find_by(email: "ac@amoschan.com")
+    post.title = "We've moved!"
+
+    post.kind = :post
+
+    post.content = "Please come visit us on our new page: [youth.mcac.church](https://youth.mcac.church)."
+
+    post.save
+  end
+
  desc "add new bulletin"
   task :new_bulletin => :environment do
     service = Group.find_by(slug: "english-service")
-    sermon_name = "Keeping His Commands"
-    speaker = "Rev. Francis Tam"
-    scripture = "John 15:9-14"
-    service_name = "Missions Sunday Worship Service"
-    published_at = DateTime.new(2022, 5, 22, 13, 30)
+    sermon_name = "Jesus' Deity"
+    speaker = "Pastor Joel Uong"
+    scripture = "John 5:16-30"
+    service_name = "Sunday Worship Service"
+    published_at = DateTime.new(2022, 6, 26, 13, 30)
 
     service_order = " - **Call to Worship**
  - **Praise & Worship**  
  - **[Announcements](#announcements)**
  - **Tithe & Offering**
+ - **Mission Moment**  
+   Servant Partners  
+   Wendy Au Yeung
  - **Sermon**  
    #{sermon_name}  
    #{scripture}  
@@ -119,63 +139,48 @@ during the quarantine period.
       bulletin: bulletin,
       description: "**Sunday Service:**
 
- - We thank **Rev. Francis Tam**, Executive Director of the Chinese Coordination Centre of World Evangelization Canada, for ministering to us today.
- - We thank **Aaron**, **Pastor Joel**, **Fanny**, **Sam**, **Tim Chin**, **Keyan**, **Nelson** and **Amos** for serving in leading and preparation of today’s service.
- - We’ll continue to have the **English Worship Service** in person and [on
+ - We thank **Pastor Joel** for ministering to us today.
+ - We thank **Fanny**, **Sewan**, **David**, **Sam**, **Tim Chin**, **Keyan**, **Nelson** and **Amos** for serving in leading and preparation of today’s service.
+ - We’ll continue to have the **English Worship Service** in person ([register](https://reopening.mcac.church) from 1 week in advanced) and [on
    Zoom](https://live.mcac.church)",
  )
 
-#     . When joining in person, worshippers can
-#    [register from 1 week in advance and up to the day of
-#    service](https://reopening.mcac.church), but encourage to sign-up ASAP.
-#  - The **Children Sunday School** offers supervision in the Fisher Hall for children to join the Zoom Sunday School in the Fisher Hall at 11:30AM.",
-#     )
+    Announcement.create(
+      bulletin: bulletin,
+      description: "We will have a Sandwiches **lunch** on Sunday, July 10 **at the park**. Sign up available soon or to contact Tim Lee.",
+    )
 
     Announcement.create(
       bulletin: bulletin,
-      description: "**Pastor James** and his family have safely
-      arrived India. Please continue to pray for their mission work in India,
-      also pray for journey mercy, safety and health. He will be back on June
-      2.",
-    )
+      description: "The Board of Elders has nominated **Aiwah Uong**, **Wen
+      Qing Long** and **Kai Geng Li** as member representatives of the **Elders
+      Nominating Committee**. If you wish to nominate additional
+      candidates, please contact our pastors by June 26.
+      If we do not receive any new additional nominations or any objections by June
+      26, the Board of Elders will formally accept the candidacy of the current
+      three nominees.",
+   )
 
     Announcement.create(
       bulletin: bulletin,
       description: "**Church Care & Community:**
 
-- Xavier was admitted to the Neuro. Your prayer is very much appreciated.
+- We would like to pray and care for **Xavier** as a church community. You can find out more about Xavier’s [conditions and visiting details HERE](https://docs.google.com/spreadsheets/u/1/d/1duXLDvHolmItuNWmU3Y0tN4DxQIrq0IGerQC7MNZhwA/htmlview#gid=1569260689). We also encourage you to share about your visit and on how Xavier is doing, etc. on the Google sheet in the “Note” column. ALSO we invite kids (and adults too!) to draw pictures, create art to **brighten up Xavier's room**. You can bring it with you to give to him when you visit or give it to Key (but go visit if you can!).
 - **Pastoral Care/Spiritual Counsel & Prayer** – Pastor James is available to
 meet with you on Zoom every Tuesday mornings or evenings. Speak to the ELT or
 visit our Facebook group to arrange a meeting.
-- Please join the **Midweek Prayer** on **Every Wednesday** 8pm. Zoom ID: 5144822704/PW: mcac.
-- Fellowship Reboot - **The gospel is a family meal. It is meant to be enjoyed
-  regularly and intentionally in the presence of others and for the benefit of
-  others.** Fellowship Reboot meets every Thursday 8-9pm [on
-  Zoom](https://fellowship.mcac.church).",
+- Please join the **Midweek Prayer** on every Wednesday at 8pm. Zoom ID: 5144822704/PW: mcac."
     )
 
     Announcement.create(
       bulletin: bulletin,
-      description: "The **50th anniversary publication committee** wishes for more
-      enriched content for our book. We sincerely invite b/s to supply
-      different categories of photos: ❶ Family photo if your whole family was
-      baptized at MCAC ❷ Baptismal photo of individuals or couples baptized on
-      the same day (please specify the year)❸ Photo of individuals who accepted
-      Christ or got baptized 50 years ago (in 1972)❹ Wedding photo of those who
-      wedded in MCAC (specify year)❺ Current photo of couples who will be
-      celebrating their 50th wedding anniversary this year ❻ Family photo of
-      those who have three generations or more worshipping at MCAC ❼ Photos
-      taken at church on Easter, Thanksgiving, or Christmas (specify year)❽
-      Please actively participate to send your wishes and blessings to MCAC's
-      50th anniversary. You can drop it off in the red and white box outside
-      the sanctuary. Please send photos and notes of blessings by June 5 to
-      **publication.mcac50💌gmail.com**. This special publication belongs to us.
-      Let us unite to offer our blessings!"
-    )
-
-    Announcement.create(
-      bulletin: bulletin,
-      description: "Carol Cho and Johnny Lau are getting married at our church on June 11.",
+      description: "Our **Youth Group** is having a time change! Exclusively for
+      the summer, beginning June 19th we will be moving our Youth group meeting
+      time from Saturday evenings to Sunday afternoons (replacing Youth Sunday
+      School time). Our new fellowship time will be on **SUNDAY from 11:30 am to
+      1:00 pm**. For an updated schedule please refer to [our youth
+      page](https://mcac.church/youth-group). For more details, contact Adrian
+      or Jack.",
     )
 
     Announcement.create(
@@ -183,7 +188,6 @@ visit our Facebook group to arrange a meeting.
       description: "**Building Reopening:**
 
  - Our church is taking a more sustainable approach for all the physical meetings at church. For now, we are maintaining the 1-meter distancing and masking at all times.
- - When joining in person worship, worshippers can [register from 1 week in advance and up to the day of service](https://reopening.mcac.church), but encourage to sign-up ASAP.
  - **Children's Sunday School** offers supervision in the Fisher Hall for children to bring their electronic devices and a pair of headphones to join their Zoom Sunday School class (11:30am-1pm). Click on [Supervised Children Sunday School](https://docs.google.com/spreadsheets/d/1rcgOS5I8AYCTCyv5vtDgsk5OhY-ENyQITNVRLDIR43E/edit?usp=sharing) tab to sign up.",
     )
   end
