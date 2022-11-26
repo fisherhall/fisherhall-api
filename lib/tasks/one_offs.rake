@@ -74,16 +74,87 @@ during the quarantine period.
 namespace :one_offs do
   desc "add new post"
   task :new_post => :environment do
-    group = Group.find_by(slug: "youth-group")
+    group = Group.find_by(slug: "english-service")
 
     post = Post.new
     post.group = group
     post.author = User.find_by(email: "ac@amoschan.com")
-    post.title = "We've moved!"
+    post.title = "MCAC 50th Anniversary"
+    post.banner_url = "https://mcac.s3.amazonaws.com/posts/81bdd4dc-4b73-466d-9a3f-49c2d4e33b39.jpg"
 
     post.kind = :post
 
-    post.content = "Please come visit us on our new page: [youth.mcac.church](https://youth.mcac.church)."
+    post.content = "Celebration activities will be held on the Thanksgiving
+Weekend (Oct 7-9). Let us grasp this opportunity to reconnect with friends
+who have previously attended MCAC and invite them to join us in this unique
+occasion. Let us participate and witness 50 years of grace. Glory be to
+God!
+
+Friday, October 7 (Evening)  
+**Remembering The Past**  
+Sharing, Thanksgiving and Prayer Meeting
+
+Saturday, October 8 (Morning)  
+**Reach Out Now**  
+Open House
+
+Sunday, October 9 (Afternoon)  
+**Our God Restores**  
+Anniversary Joint Worship
+
+Sunday, October 9 (Evening)  
+**Thanksgiving Banquet**
+
+**50th Anniversary Thanksgiving Banquet** – Because of a generous gift that
+offset the costs, banquet ticket prices: adult $50 and $25 for children 12
+years and under (additional subsidy is available). For enquiry and register:
+**mcac50y💌gmail.com**. Please register asap so that the preparation can move
+forward! Deadline is July 31.
+
+Thank you, brothers and sisters, for submitting your sharing and photos for the
+50th anniversary publication. The deadline for submission is over. Please
+understand since we have a limit on the content, we will not be able to use all
+the photos. If you had not received an acknowledgement on your submission,
+please contact the publication team (Terence Ngai, Richard Ha, Candid Yeung,
+Donna Hum)."
+
+    post.save
+  end
+
+namespace :one_offs do
+  desc "add new post"
+  task :new_post => :environment do
+    group = Group.find_by(slug: "english-service")
+
+    post = Post.new
+    post.group = group
+    post.author = User.find_by(email: "ac@amoschan.com")
+    post.title = "Open House - Carnival"
+    post.banner_url = "https://mcac.s3.amazonaws.com/posts/pexels-picjumbocom-225238.jpg"
+
+    post.kind = :post
+
+    post.content = "<img src='https://mcac.s3.amazonaws.com/posts/Screen+Shot+2022-09-10+at+9.34.13+PM.png' />
+
+<br />
+
+**WHEN?** October 8 2022 from 1:00 to 4:00
+
+**WHAT?** Montreal Chinese Alliance Church - 50th Anniversary Open House and Carnival
+
+Come join us for:  
+Fun - carnival games and bouncy castle  
+Food - hot dogs, popcorn, snow cones and cotton candy  
+
+*Brief presentation of our church’s history and current activities will start at 1:00 and Carnival will begin at 1:30.
+
+**WHERE?** 13 Finchley Street, Hampstead, Quebec H3X 2Z4
+
+**COST?** Free!
+
+PLEASE NOTE: Masks are required indoors.
+
+FOR MORE INFO: **mcac50y💌gmail.com**"
 
     post.save
   end
@@ -91,23 +162,21 @@ namespace :one_offs do
  desc "add new bulletin"
   task :new_bulletin => :environment do
     service = Group.find_by(slug: "english-service")
-    sermon_name = "Jesus' Deity"
-    speaker = "Pastor Joel Uong"
-    scripture = "John 5:16-30"
-    service_name = "Sunday Worship Service"
-    published_at = DateTime.new(2022, 6, 26, 13, 30)
+    sermon_name = "Saving Faith"
+    speaker = "Pastor James Levi"
+    scripture = "James 2:14-26"
+    service_name = "Holy Commmunion Sunday Worship Service"
+    published_at = DateTime.new(2022, 11, 13, 14, 30)
 
     service_order = " - **Call to Worship**
  - **Praise & Worship**  
  - **[Announcements](#announcements)**
  - **Tithe & Offering**
- - **Mission Moment**  
-   Servant Partners  
-   Wendy Au Yeung
  - **Sermon**  
    #{sermon_name}  
    #{scripture}  
    #{speaker}
+ - **Holy Communion**
  - **Doxology**
  - **Benediction**"
 
@@ -132,63 +201,55 @@ namespace :one_offs do
 
     Announcement.create(
       bulletin: bulletin,
-      description: "2022 Church & 50th Anniversary theme is “Our God Restores” from Hebrews 12:1-2. Sub-theme for May to August is “Renew & Revive.”",
+      description: "2022 Church & 50th Anniversary theme is *Our God Restores* from Hebrews 12:1-2. Sub-theme for September to December is \"Rejoice & Thanksgiving.\"",
     )
 
     Announcement.create(
       bulletin: bulletin,
-      description: "**Sunday Service:**
-
- - We thank **Pastor Joel** for ministering to us today.
- - We thank **Fanny**, **Sewan**, **David**, **Sam**, **Tim Chin**, **Keyan**, **Nelson** and **Amos** for serving in leading and preparation of today’s service.
- - We’ll continue to have the **English Worship Service** in person ([register](https://reopening.mcac.church) from 1 week in advanced) and [on
-   Zoom](https://live.mcac.church)",
- )
-
-    Announcement.create(
-      bulletin: bulletin,
-      description: "We will have a Sandwiches **lunch** on Sunday, July 10 **at the park**. Sign up available soon or to contact Tim Lee.",
+      description: "Up to now, we received 44 pledge cards, pledged amount was
+      $39,950. Next year’s Missions budget is $97,650. If you want to
+      participate in the Faith Pledge, [you can do so online](https://docs.google.com/forms/d/e/1FAIpQLScDm3y5nHIXiL2XxREiWNypZ41a8f2hju0Hlts2v0S3CeQACg/viewform).
+      You can learn more about the mission works our church supports from the
+      handbook which you can download from the
+      [handbook](https://mcac.s3.amazonaws.com/bulletins/024e5a02-49c4-4ca1-8b63-7b7fa1aa8e40-mc_handbook.pdf).
+      Please continue to pray for the various mission items.",
     )
 
     Announcement.create(
       bulletin: bulletin,
-      description: "The Board of Elders has nominated **Aiwah Uong**, **Wen
-      Qing Long** and **Kai Geng Li** as member representatives of the **Elders
-      Nominating Committee**. If you wish to nominate additional
-      candidates, please contact our pastors by June 26.
-      If we do not receive any new additional nominations or any objections by June
-      26, the Board of Elders will formally accept the candidacy of the current
-      three nominees.",
-   )
+      description: "The following brothers (English congregation) **Anderson Lee** and
+      **Steve Ng**, (Cantonese): Allan Lau, Terence Ngai and Patrick Tang,
+      (Mandarin): Guo ZhiYuan have agreed to let their names stand as nominees
+      for 2023 elders. The congregation can submit other nominations until today.
+      When nominating a member, please have the consent from the nominee
+      and the written consents from two members and submit to the pastors.
+      Voting will take place in person on November 27 after the Sunday Service."
+    )
+
+    Announcement.create(
+      bulletin: bulletin,
+      description: "There will be the **Elders Board meeting** on Saturday. The
+      Board will discuss the proposal for the reorganization of the Board.
+      Please pray for the church leaders."
+    )
+
+    Announcement.create(
+      bulletin: bulletin,
+      description: "The **Finance Team** is starting to send the donation records
+      from January to August this year and the pledge card of last year to
+      brothers and sisters who participated. Please check your junk mail box.
+      If you need assistance, please contact the Finance Team, or send an email
+      to **donations.mcac💌gmail.com**.",
+    )
 
     Announcement.create(
       bulletin: bulletin,
       description: "**Church Care & Community:**
 
-- We would like to pray and care for **Xavier** as a church community. You can find out more about Xavier’s [conditions and visiting details HERE](https://docs.google.com/spreadsheets/u/1/d/1duXLDvHolmItuNWmU3Y0tN4DxQIrq0IGerQC7MNZhwA/htmlview#gid=1569260689). We also encourage you to share about your visit and on how Xavier is doing, etc. on the Google sheet in the “Note” column. ALSO we invite kids (and adults too!) to draw pictures, create art to **brighten up Xavier's room**. You can bring it with you to give to him when you visit or give it to Key (but go visit if you can!).
-- **Pastoral Care/Spiritual Counsel & Prayer** – Pastor James is available to
-meet with you on Zoom every Tuesday mornings or evenings. Speak to the ELT or
-visit our Facebook group to arrange a meeting.
-- Please join the **Midweek Prayer** on every Wednesday at 8pm. Zoom ID: 5144822704/PW: mcac."
+- Please join the **Midweek Prayer** on **Every Wednesday** 8pm. Zoom ID:
+  5144822704/PW: mcac.
+- **Pastoral Care/Spiritual Counsel & Prayer:** Pastor James is available to
+  meet with you at the church or online. Text or WhatsApp to set
+  up a time."
     )
-
-    Announcement.create(
-      bulletin: bulletin,
-      description: "Our **Youth Group** is having a time change! Exclusively for
-      the summer, beginning June 19th we will be moving our Youth group meeting
-      time from Saturday evenings to Sunday afternoons (replacing Youth Sunday
-      School time). Our new fellowship time will be on **SUNDAY from 11:30 am to
-      1:00 pm**. For an updated schedule please refer to [our youth
-      page](https://mcac.church/youth-group). For more details, contact Adrian
-      or Jack.",
-    )
-
-    Announcement.create(
-      bulletin: bulletin,
-      description: "**Building Reopening:**
-
- - Our church is taking a more sustainable approach for all the physical meetings at church. For now, we are maintaining the 1-meter distancing and masking at all times.
- - **Children's Sunday School** offers supervision in the Fisher Hall for children to bring their electronic devices and a pair of headphones to join their Zoom Sunday School class (11:30am-1pm). Click on [Supervised Children Sunday School](https://docs.google.com/spreadsheets/d/1rcgOS5I8AYCTCyv5vtDgsk5OhY-ENyQITNVRLDIR43E/edit?usp=sharing) tab to sign up.",
-    )
-  end
 end
